@@ -1,9 +1,9 @@
 
 import React, { useState, ReactNode } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader2, Wand2 } from "lucide-react";
+import { Loader2, Wand2, Info } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface EditableComponentProps {
@@ -50,6 +50,8 @@ const EditableComponent = ({ children, componentName, onUpdate }: EditableCompon
     setIsLoading(true);
     
     try {
+      console.log("Starting API request to Claude...");
+      
       const response = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
         headers: {
@@ -75,11 +77,14 @@ const EditableComponent = ({ children, componentName, onUpdate }: EditableCompon
         })
       });
       
-      const data = await response.json();
-      
       if (!response.ok) {
-        throw new Error(data.error?.message || "Unknown error occurred");
+        const errorData = await response.json().catch(() => ({ error: { message: "Unknown error" } }));
+        console.error("Claude API error:", errorData);
+        throw new Error(errorData.error?.message || `API error: ${response.status}`);
       }
+      
+      const data = await response.json();
+      console.log("Claude API response:", data);
       
       const generatedContent = data.content[0].text;
       
@@ -114,9 +119,18 @@ const EditableComponent = ({ children, componentName, onUpdate }: EditableCompon
       });
     } catch (error) {
       console.error("Error processing prompt:", error);
+      
+      // More descriptive error message based on the error
+      let errorMessage = "";
+      if (error instanceof TypeError && error.message === "Failed to fetch") {
+        errorMessage = "Network error: Could not connect to Claude API. This is likely due to CORS restrictions when calling the API directly from your browser. Consider using a backend proxy or API route.";
+      } else {
+        errorMessage = error instanceof Error ? error.message : "Failed to generate content. Please try again.";
+      }
+      
       toast({
         title: "Error",
-        description: error instanceof Error ? error.message : "Failed to generate content. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
@@ -151,19 +165,28 @@ const EditableComponent = ({ children, componentName, onUpdate }: EditableCompon
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>Edit {componentName}</DialogTitle>
+            <DialogDescription>
+              Describe how you'd like to change this component.
+            </DialogDescription>
           </DialogHeader>
           {showApiKeyInput ? (
             <div className="space-y-4 py-4">
               <p className="text-sm text-muted-foreground">
                 Enter your Claude API key. This will be saved in your browser's localStorage.
               </p>
-              <Textarea
-                placeholder="sk-ant-api03-..."
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
-                className="resize-none"
-              />
-              <div className="flex justify-end">
+              <div className="flex items-start gap-2">
+                <Textarea
+                  placeholder="sk-ant-api03-..."
+                  value={apiKey}
+                  onChange={(e) => setApiKey(e.target.value)}
+                  className="resize-none"
+                />
+              </div>
+              <div className="flex justify-between items-center">
+                <div className="text-xs text-amber-600 flex items-center">
+                  <Info className="h-3 w-3 mr-1" />
+                  Note: Direct browser API calls may face CORS issues
+                </div>
                 <Button onClick={saveApiKey}>
                   Save API Key
                 </Button>
@@ -171,9 +194,6 @@ const EditableComponent = ({ children, componentName, onUpdate }: EditableCompon
             </div>
           ) : (
             <div className="space-y-4 py-4">
-              <p className="text-sm text-muted-foreground">
-                Describe how you'd like to change this component.
-              </p>
               <Textarea
                 placeholder={`Example: Change the ${componentName} to be more energetic and vibrant`}
                 value={prompt}
