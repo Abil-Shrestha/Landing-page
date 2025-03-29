@@ -1,6 +1,5 @@
-
 import React, { useState, useRef, useEffect } from "react";
-import { useScroll, motion, AnimatePresence } from "@react-three/drei";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import NavLink from "./NavLink";
 import ThemeToggle from "./ThemeToggle";
