@@ -6,16 +6,16 @@ import ShaderCanvas from "./ShaderCanvas";
 
 const HeroSection = () => {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden h-screen w-full">
       {/* Shader background */}
       <ShaderCanvas />
       
       {/* Content overlay */}
       <div className="absolute inset-0 bg-black/30" /> 
       
-      <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 h-full flex items-center justify-center">
         <div className="flex flex-col items-center text-center">
-          <h1 className="animate-fade-in text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl">
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl">
             <span className="block">Build beautiful</span>
             <span className="block bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent">
               digital experiences

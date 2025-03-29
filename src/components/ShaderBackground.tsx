@@ -13,7 +13,9 @@ const ShaderMaterial = shaderMaterial(
   },
   // Vertex shader
   `
+    varying vec2 vUv;
     void main() {
+      vUv = uv;
       gl_Position = vec4(position, 1.0);
     }
   `,
@@ -21,6 +23,7 @@ const ShaderMaterial = shaderMaterial(
   `
     uniform float iTime;
     uniform vec2 iResolution;
+    varying vec2 vUv;
 
     #define t iTime
     #define r iResolution.xy
@@ -42,7 +45,7 @@ const ShaderMaterial = shaderMaterial(
     }
 
     void main() {
-      mainImage(gl_FragColor, gl_FragCoord.xy);
+      mainImage(gl_FragColor, vUv * iResolution);
     }
   `
 );
@@ -65,13 +68,14 @@ const ShaderBackground = () => {
   useFrame((state) => {
     if (materialRef.current) {
       materialRef.current.iTime = state.clock.getElapsedTime();
+      materialRef.current.iResolution.set(state.size.width, state.size.height);
     }
   });
 
   return (
     <mesh>
       <planeGeometry args={[2, 2]} />
-      <shaderMaterial ref={materialRef} />
+      <shaderMaterial ref={materialRef} iTime={0} iResolution={new THREE.Vector2(1, 1)} />
     </mesh>
   );
 };

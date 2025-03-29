@@ -15,10 +15,12 @@ const ShaderCanvas: React.FC<ShaderCanvasProps> = ({ className }) => {
     const handleResize = () => {
       if (containerRef.current) {
         const { width, height } = containerRef.current.getBoundingClientRect();
+        // You can use these dimensions if needed
       }
     };
 
     window.addEventListener('resize', handleResize);
+    handleResize(); // Call once to initialize
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -26,6 +28,7 @@ const ShaderCanvas: React.FC<ShaderCanvasProps> = ({ className }) => {
     <div 
       ref={containerRef} 
       className={`absolute inset-0 z-0 ${className || ''}`}
+      style={{ width: '100%', height: '100%' }}
     >
       <Canvas>
         <ShaderBackground />
