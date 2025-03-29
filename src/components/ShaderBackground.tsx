@@ -6,7 +6,7 @@ import * as THREE from 'three';
 import { extend } from '@react-three/fiber';
 
 // Create a custom shader material
-const ShaderMaterial = shaderMaterial(
+const GradientShaderMaterial = shaderMaterial(
   {
     iTime: 0,
     iResolution: new THREE.Vector2(1, 1),
@@ -16,10 +16,10 @@ const ShaderMaterial = shaderMaterial(
     varying vec2 vUv;
     void main() {
       vUv = uv;
-      gl_Position = vec4(position, 1.0);
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     }
   `,
-  // Fragment shader from user's code
+  // Fragment shader
   `
     uniform float iTime;
     uniform vec2 iResolution;
@@ -51,13 +51,13 @@ const ShaderMaterial = shaderMaterial(
 );
 
 // Register the material
-extend({ ShaderMaterial });
+extend({ GradientShaderMaterial });
 
 // Create component types
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'shaderMaterial': any;
+      'gradientShaderMaterial': any;
     }
   }
 }
@@ -68,14 +68,14 @@ const ShaderBackground = () => {
   useFrame((state) => {
     if (materialRef.current) {
       materialRef.current.iTime = state.clock.getElapsedTime();
-      materialRef.current.iResolution.set(state.size.width, state.size.height);
+      materialRef.current.iResolution.set(window.innerWidth, window.innerHeight);
     }
   });
 
   return (
     <mesh>
       <planeGeometry args={[2, 2]} />
-      <shaderMaterial ref={materialRef} iTime={0} iResolution={new THREE.Vector2(1, 1)} />
+      <gradientShaderMaterial ref={materialRef} iTime={0} iResolution={new THREE.Vector2(window.innerWidth, window.innerHeight)} />
     </mesh>
   );
 };

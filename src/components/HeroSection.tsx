@@ -11,7 +11,7 @@ const HeroSection = () => {
       <ShaderCanvas />
       
       {/* Content overlay */}
-      <div className="absolute inset-0 bg-black/30 z-10" /> 
+      <div className="absolute inset-0 bg-black/40 z-10" /> 
       
       <div className="relative z-20 mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 h-full flex items-center justify-center">
         <div className="flex flex-col items-center text-center">
