@@ -28,9 +28,9 @@ const ShaderCanvas: React.FC<ShaderCanvasProps> = ({ className }) => {
     <div 
       ref={containerRef} 
       className={`absolute inset-0 z-0 ${className || ''}`}
-      style={{ width: '100%', height: '100%' }}
+      style={{ width: '100%', height: '100%', position: 'absolute' }}
     >
-      <Canvas>
+      <Canvas style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
         <ShaderBackground />
       </Canvas>
     </div>
