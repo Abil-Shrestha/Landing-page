@@ -1,11 +1,11 @@
 
-import React, { useState } from "react";
+import React, { useState, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Github } from "lucide-react";
 import EditableComponent from "./EditableComponent";
 
 const HeroSection = () => {
-  const [heading, setHeading] = useState(
+  const [heading, setHeading] = useState<ReactNode>(
     <>
       <span className="block">Build beautiful</span>
       <span className="block bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
@@ -14,13 +14,36 @@ const HeroSection = () => {
     </>
   );
   
-  const [description, setDescription] = useState(
+  const [description, setDescription] = useState<string>(
     "Start creating amazing web applications with our powerful and flexible platform. Get started in minutes, no complex setup required."
   );
   
-  const [ctaText, setCtaText] = useState("Get Started");
+  const [ctaText, setCtaText] = useState<string>("Get Started");
   
-  const [secondaryButtonText, setSecondaryButtonText] = useState("Learn more");
+  const [secondaryButtonText, setSecondaryButtonText] = useState<string>("Learn more");
+
+  // Wrapper functions to handle the type conversion
+  const updateHeading = (newContent: ReactNode) => {
+    setHeading(newContent);
+  };
+  
+  const updateDescription = (newContent: ReactNode) => {
+    if (typeof newContent === "string" || typeof newContent === "number") {
+      setDescription(String(newContent));
+    }
+  };
+  
+  const updateCtaText = (newContent: ReactNode) => {
+    if (typeof newContent === "string" || typeof newContent === "number") {
+      setCtaText(String(newContent));
+    }
+  };
+  
+  const updateSecondaryButtonText = (newContent: ReactNode) => {
+    if (typeof newContent === "string" || typeof newContent === "number") {
+      setSecondaryButtonText(String(newContent));
+    }
+  };
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-indigo-100 to-white">
@@ -31,14 +54,14 @@ const HeroSection = () => {
       
       <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
         <div className="flex flex-col items-center text-center">
-          <EditableComponent componentName="heading" onUpdate={setHeading}>
+          <EditableComponent componentName="heading" onUpdate={updateHeading}>
             <h1 className="animate-fade-in text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl md:text-7xl">
               {heading}
             </h1>
           </EditableComponent>
           
           <div className="mt-6 max-w-2xl">
-            <EditableComponent componentName="description" onUpdate={setDescription}>
+            <EditableComponent componentName="description" onUpdate={updateDescription}>
               <p className="text-xl text-gray-600">
                 {description}
               </p>
@@ -46,13 +69,13 @@ const HeroSection = () => {
           </div>
           
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <EditableComponent componentName="primary button" onUpdate={setCtaText}>
+            <EditableComponent componentName="primary button" onUpdate={updateCtaText}>
               <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700">
                 {ctaText} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </EditableComponent>
             
-            <EditableComponent componentName="secondary button" onUpdate={setSecondaryButtonText}>
+            <EditableComponent componentName="secondary button" onUpdate={updateSecondaryButtonText}>
               <Button size="lg" variant="outline">
                 {secondaryButtonText}
               </Button>
