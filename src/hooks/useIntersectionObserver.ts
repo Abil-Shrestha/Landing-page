@@ -14,21 +14,22 @@ function useIntersectionObserver(
     once = false // Add once parameter
 ): IntersectionObserverEntry | undefined {
     const [entry, setEntry] = useState<IntersectionObserverEntry>();
-
-    const updateEntry = ([entry]: IntersectionObserverEntry[]): void => {
-        setEntry(entry);
-        
-        // If once is true and the element is intersecting, disconnect the observer
-        if (once && entry.isIntersecting) {
-            observer?.disconnect();
-        }
-    };
-
+    
     useEffect(() => {
         const node = elementRef?.current; // DOM Ref
         const hasIOSupport = !!window.IntersectionObserver;
 
         if (!hasIOSupport || !node) return;
+
+        // Create an update entry function that handles the once parameter
+        const updateEntry = ([newEntry]: IntersectionObserverEntry[]): void => {
+            setEntry(newEntry);
+            
+            // If once is true and the element is intersecting, disconnect the observer
+            if (once && newEntry.isIntersecting && observer) {
+                observer.disconnect();
+            }
+        };
 
         const observerParams = { threshold, root, rootMargin };
         const observer = new IntersectionObserver(updateEntry, observerParams);
