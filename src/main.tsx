@@ -15,6 +15,7 @@ Sentry.init({
   replaysOnErrorSampleRate: 1.0, // Sample rate for sessions with errors (100%)
   environment: import.meta.env.MODE, // Sets the environment (development/production)
   enabled: import.meta.env.PROD, // Only enable in production by default
+  // This ensures errors are properly tracked for the hackathon submission
 });
 
 // Create a Sentry wrapped version of App with error boundary
