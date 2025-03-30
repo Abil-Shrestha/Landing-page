@@ -51,13 +51,13 @@ const BentoSection: React.FC = () => {
             className="flex flex-col items-center justify-center w-full relative px-5 md:px-10 py-16 md:py-24" // Added some padding
         >
             <div className="border-x border-border mx-5 md:mx-10 relative w-full max-w-7xl"> {/* Added border color and max-width */}
-                {/* Left side pattern - Updated opacity from opacity-5 to opacity-80 */}
+                {/* Left side pattern - with reduced opacity */}
                 <div
-                    className="absolute top-0 -left-4 md:-left-14 h-full w-4 md:w-14 text-primary/80 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)]"
+                    className="absolute top-0 -left-4 md:-left-14 h-full w-4 md:w-14 text-primary/10 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)]"
                 />
-                {/* Right side pattern - Updated opacity from opacity-5 to opacity-80 */}
+                {/* Right side pattern - with reduced opacity */}
                 <div
-                    className="absolute top-0 -right-4 md:-right-14 h-full w-4 md:w-14 text-primary/80 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)]"
+                    className="absolute top-0 -right-4 md:-right-14 h-full w-4 md:w-14 text-primary/10 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)]"
                 />
 
                 {/* Replacing l.X component with a div for title/description */}
@@ -99,4 +99,4 @@ const BentoSection: React.FC = () => {
     );
 };
 
-export default BentoSection; 
+export default BentoSection;
