@@ -9,7 +9,7 @@ ReelHyp is an AI-powered platform that transforms how brands create user-generat
 
 ## Project info
 
-**URL**: https://hero-part-creator.lovable.app/
+**URL**: https://reel-hyp.lovable.app/
 
 
 ## Competition Track
