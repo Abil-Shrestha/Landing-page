@@ -35,9 +35,4 @@ export const addBreadcrumb = (message: string, category?: string, level?: Sentry
   });
 };
 
-/**
- * Start a Sentry transaction for performance monitoring
- */
-export const startTransaction = (name: string, op: string) => {
-  return Sentry.startTransaction({ name, op });
-};
+// Removed startTransaction function as it's no longer available in the current Sentry version
