@@ -1,16 +1,16 @@
-# ReelHyp
+# ReelHyp 🚀
+
+**AI-Generated Authentic UGC for Brands**
+
+
+## Project Overview
+
+ReelHyp is an AI-powered platform that transforms how brands create user-generated content. Our solution generates authentic, engaging UGC-style content tailored to your brand voice and campaign goals in minutes, eliminating the need to chase creators or manage complex production workflows.
 
 ## Project info
 
 **URL**: https://hero-part-creator.lovable.app/
 
-# ReelHyp 🚀
-
-**AI-Generated Authentic UGC for Brands**
-
-## Project Overview
-
-ReelHyp is an AI-powered platform that transforms how brands create user-generated content. Our solution generates authentic, engaging UGC-style content tailored to your brand voice and campaign goals in minutes, eliminating the need to chase creators or manage complex production workflows.
 
 ## Competition Track
 
@@ -74,13 +74,13 @@ ReelHyp is built using a modern tech stack:
 ## Screenshots & Features
 
 ### 1. Hero Section
-![Hero Section](/public/screenshot-0.png)
+![Hero Section](https://github.com/Abil-Shrestha/Landing-page/blob/main/public/Screenshot-0.png?raw=true)
 
 ### 2. Bento Grid Section
-![Bento Grid Section](/public/screenshot-1.png)
+![Bento Grid Section](https://github.com/Abil-Shrestha/Landing-page/blob/main/public/Screenshot-1.png?raw=true)
 
 ### 3. Features Section
-![Features Section](/public/screenshot-2.png)
+![Features Section](https://github.com/Abil-Shrestha/Landing-page/blob/main/public/screenshot-2.png?raw=true)
 
 ## Team Information
 
