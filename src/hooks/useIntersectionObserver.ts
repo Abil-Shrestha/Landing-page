@@ -1,6 +1,13 @@
 
 import { type RefObject, useEffect, useState } from 'react';
 
+/**
+ * Custom hook that uses the Intersection Observer API to detect when an element is visible in the viewport
+ * @param elementRef - A ref to the element to observe
+ * @param options - IntersectionObserver options (threshold, root, rootMargin)
+ * @param once - When true, stops observing after the element becomes visible once
+ * @returns The intersection observer entry or undefined
+ */
 function useIntersectionObserver(
     elementRef: RefObject<Element>,
     { threshold = 0, root = null, rootMargin = '0%' }: IntersectionObserverInit,
@@ -10,6 +17,11 @@ function useIntersectionObserver(
 
     const updateEntry = ([entry]: IntersectionObserverEntry[]): void => {
         setEntry(entry);
+        
+        // If once is true and the element is intersecting, disconnect the observer
+        if (once && entry.isIntersecting) {
+            observer?.disconnect();
+        }
     };
 
     useEffect(() => {
