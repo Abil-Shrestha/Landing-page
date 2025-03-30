@@ -1,8 +1,10 @@
+
 import { type RefObject, useEffect, useState } from 'react';
 
 function useIntersectionObserver(
     elementRef: RefObject<Element>,
-    { threshold = 0, root = null, rootMargin = '0%' }: IntersectionObserverInit
+    { threshold = 0, root = null, rootMargin = '0%' }: IntersectionObserverInit,
+    once = false // Add once parameter
 ): IntersectionObserverEntry | undefined {
     const [entry, setEntry] = useState<IntersectionObserverEntry>();
 
@@ -29,4 +31,4 @@ function useIntersectionObserver(
     return entry;
 }
 
-export default useIntersectionObserver; 
+export default useIntersectionObserver;

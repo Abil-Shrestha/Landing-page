@@ -12,31 +12,38 @@ interface OrbitingCirclesProps {
     radius?: number;
     path?: boolean;
     iconSize?: number;
-    speed?: number; // Added to control duration dynamically
-    index?: number; // Added for staggering animations
-    startAnimationDelay?: number; // Added delay before animation starts
-    once?: boolean; // Added to control intersection observer trigger
-    startAngle?: number; // Added to control the starting angle of the orbit
+    speed?: number; 
+    index?: number; 
+    startAnimationDelay?: number;
+    once?: boolean; // This is passed separately to useIntersectionObserver
+    startAngle?: number;
+}
+
+// Define an extended interface that includes the 'once' property
+interface ExtendedIntersectionObserverOptions extends IntersectionObserverInit {
+    once?: boolean;
 }
 
 const OrbitingCircles: React.FC<OrbitingCirclesProps> = ({
     className,
     children,
     reverse = false,
-    duration = 20, // Base duration in seconds
+    duration = 20,
     radius = 160,
     path = true,
     iconSize = 30,
-    speed = 1, // Speed multiplier
-    index = 0, // Index for staggering
-    startAnimationDelay = 0, // Base delay
-    once = false, // Trigger animation only once
-    startAngle = 0, // Starting angle in degrees (0 = right, 90 = bottom, etc.)
+    speed = 1,
+    index = 0,
+    startAnimationDelay = 0,
+    once = false,
+    startAngle = 0,
     ...props
 }) => {
-    const calculatedDuration = duration / speed; // Adjust duration based on speed
+    const calculatedDuration = duration / speed;
     const containerRef = useRef<HTMLDivElement>(null);
-    const entry = useIntersectionObserver(containerRef, { once });
+    // Pass options separately to avoid the type error
+    const observerOptions: IntersectionObserverInit = { threshold: 0, root: null, rootMargin: '0%' };
+    const entry = useIntersectionObserver(containerRef, observerOptions, once);
     const [isAnimating, setIsAnimating] = useState(false);
 
     useEffect(() => {
@@ -143,4 +150,4 @@ const OrbitingCircles: React.FC<OrbitingCirclesProps> = ({
     );
 };
 
-export { OrbitingCircles }; 
+export { OrbitingCircles };

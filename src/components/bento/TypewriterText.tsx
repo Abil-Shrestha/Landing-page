@@ -19,6 +19,11 @@ interface TypewriterTextProps {
     onError?: (error: any) => void;
 }
 
+// Define our own type to satisfy TypeScript
+interface WordSegmenter {
+    segment: string;
+}
+
 const useTypewriter = (props: TypewriterTextProps) => {
     const {
         textStream,
@@ -94,13 +99,24 @@ const useTypewriter = (props: TypewriterTextProps) => {
     const segmentText = useCallback((text: string) => {
         if (modeRef.current === 'fade') {
             try {
-                // Use Intl.Segmenter if available (more accurate word boundaries)
-                const segmenter = new Intl.Segmenter(navigator.language, { granularity: 'word' });
-                const segmented = Array.from(segmenter.segment(text));
-                setSegments(segmented.map((s, i) => ({ text: s.segment, index: i })));
+                // Check if Intl.Segmenter exists
+                if (typeof Intl !== 'undefined' && 'Segmenter' in Intl) {
+                    // Use type assertion to tell TypeScript that Segmenter exists
+                    const segmenter = new (Intl as any).Segmenter(navigator.language, { granularity: 'word' });
+                    const segmented = Array.from(segmenter.segment(text));
+                    setSegments(
+                        segmented.map((s: any, i: number) => ({ 
+                            text: s.segment, 
+                            index: i 
+                        }))
+                    );
+                } else {
+                    // Fallback for browsers without Intl.Segmenter
+                    throw new Error('Intl.Segmenter not supported');
+                }
             } catch (error) {
                 // Fallback for environments without Intl.Segmenter or for errors
-                console.warn('Intl.Segmenter not supported or failed, using basic split.', error);
+                console.warn('Intl.Segmenter not supported or failed, using basic split.');
                 setSegments(text.split(/(\s+)/).filter(Boolean).map((s, i) => ({ text: s, index: i })));
                 onError?.(error);
             }
@@ -302,4 +318,4 @@ const TypewriterText: React.FC<TypewriterTextProps> = (props) => {
     );
 };
 
-export default TypewriterText; 
+export default TypewriterText;
