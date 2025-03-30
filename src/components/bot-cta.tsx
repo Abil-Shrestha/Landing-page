@@ -1,3 +1,6 @@
+
+import TextToSpeech from './TextToSpeech';
+
 const BotCTA = () => {
     return (
         <div className="relative mx-auto mt-24 max-w-7xl sm:mt-56 sm:px-6 lg:px-8 h-[500px]">
@@ -6,6 +9,9 @@ const BotCTA = () => {
                 <h2 className="mx-auto max-w-2xl text-center text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                     Start Marketing Now!
                 </h2>
+                
+                <TextToSpeech />
+                
                 <button
                     type="button"
                     className="bg-black dark:bg-white h-9 flex items-center justify-center text-sm font-medium tracking-wide rounded-md text-white dark:text-black w-full sm:w-32 px-4 shadow-lg border border-white/20 dark:border-black/20 hover:bg-black/80 dark:hover:bg-white/80 transition-all ease-out active:scale-95"
