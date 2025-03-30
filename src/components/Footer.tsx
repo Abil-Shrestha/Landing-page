@@ -1,3 +1,4 @@
+
 import {
     Github,
     Instagram,
@@ -194,6 +195,36 @@ const Footer = () => {
                         </ul>
                     </div>
                 ))}
+                
+                {/* Tech Sponsors Credits - Added for hackathon */}
+                <div className="w-full mt-8 py-4 border-t border-[var(--accents-2)]">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                        <p className="text-sm text-[var(--text-secondary)]">Powered by:</p>
+                        <div className="flex items-center gap-6">
+                            <a 
+                                href="https://sentry.io" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
+                            >
+                                <img src="/sponsors/sentry.svg" alt="Sentry" className="h-4 dark:invert" />
+                                <span className="text-xs text-[var(--text-secondary)]">Sentry</span>
+                            </a>
+                            <a 
+                                href="https://elevenlabs.io" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--text-secondary)]">
+                                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                                    <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27" />
+                                </svg>
+                                <span className="text-xs text-[var(--text-secondary)]">ElevenLabs</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </footer>
         </div>
     )
