@@ -39,7 +39,7 @@ const IntegrationsAnimation: React.FC = () => {
         {
             name: "TikTok",
             src: "/tiktok.svg",
-            radius: 170,
+            radius: 140,
             duration: 30,
             speed: 0.9,
             iconSize: 60,
@@ -50,7 +50,7 @@ const IntegrationsAnimation: React.FC = () => {
         {
             name: "YouTube",
             src: "/youtube.svg",
-            radius: 200,
+            radius: 160,
             duration: 32,
             speed: 0.9,
             iconSize: 60,

@@ -19,13 +19,13 @@ const taskItems = [
     },
     {
         title: "UGC Campaign Planning",
-        className: "bg-primary/40 text-primary-foreground",
+        className: "bg-primary text-primary-foreground",
         day: 2, // Thursday
         time: 0.6 // Later in the day
     },
     {
         title: "Social Media Scheduling",
-        className: "bg-primary/20 border border-primary border-dashed text-primary-foreground",
+        className: "bg-primary text-primary-foreground",
         day: 3, // Saturday
         time: 0.2 // Middle of the day
     },

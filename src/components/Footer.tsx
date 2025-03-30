@@ -15,7 +15,6 @@ const Footer = () => {
                 { label: "Pricing", href: "#pricing" },
                 { label: "How It Works", href: "#how-it-works" },
                 { label: "FAQ", href: "#faq" },
-                { label: "Documentation", href: "/docs" },
             ],
         },
         company: {
@@ -38,15 +37,6 @@ const Footer = () => {
                 },
                 { label: "Contact", href: "/contact" },
                 { label: "Support", href: "/support" },
-            ],
-        },
-        legal: {
-            title: "Legal",
-            items: [
-                { label: "Privacy Policy", href: "/privacy" },
-                { label: "Terms of Service", href: "/terms" },
-                { label: "Cookie Policy", href: "/cookies" },
-                { label: "GDPR", href: "/gdpr" },
             ],
         },
     }
