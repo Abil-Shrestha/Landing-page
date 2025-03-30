@@ -5,9 +5,8 @@ import App from './App.tsx'
 import './index.css'
 
 // Initialize Sentry
-// Replace this with your actual Sentry DSN when deploying to production
 Sentry.init({
-  dsn: "https://examplePublicKey@o0.ingest.sentry.io/0", // Replace with your Sentry DSN
+  dsn: "https://4c33de1bc4664e03f1f8ee497c7cc592@o4509065806282752.ingest.us.sentry.io/4509065807134720",
   integrations: [
     new Sentry.BrowserTracing(),
     new Sentry.Replay(),
