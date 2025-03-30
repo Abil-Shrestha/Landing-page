@@ -41,3 +41,288 @@
 .read-the-docs {
   color: #888;
 }
+
+
+/* Add this animation for OrbitingCircles */
+@keyframes orbit {
+	0% {
+		transform: rotate(0deg) translateX(var(--radius)) rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg) translateX(var(--radius)) rotate(-360deg);
+	}
+}
+
+.animate-orbit {
+	animation: orbit var(--duration) linear infinite;
+}
+
+/* Foundation Card Styles */
+.foundation-card {
+	position: relative;
+	width: 100%;
+	min-height: 240px;
+	border-radius: 12px;
+	padding: 24px;
+	background: linear-gradient(180deg, #ffffff 0, var(--accents-1) 65.62%);
+	transition: background .15s ease;
+}
+
+.dark .foundation-card {
+	background: linear-gradient(180deg, #242424, #121212 65.62%);
+}
+
+.foundation-card:before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	padding: 1.2px;
+	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+}
+
+.foundation-card[data-variant="react"]:before {
+	background: conic-gradient(
+		from 180deg at 50% 50%,
+		var(--accents-2) 0deg,
+		var(--accents-2) 176deg,
+		#61dafb 193deg,
+		var(--accents-2) 217deg,
+		var(--accents-2) 1turn
+	);
+}
+
+.foundation-card[data-variant="next"]:before {
+	background: conic-gradient(
+		from 0deg at 50% 50%,
+		var(--accents-2) 0deg,
+		var(--accents-2) 3deg,
+		var(--accents-2) 328deg,
+		#df2e6c 349deg,
+		var(--accents-2) 1turn
+	);
+}
+
+.foundation-card[data-variant="turbo"]:before {
+	background: conic-gradient(
+		from 0deg at 50% 50%,
+		#ffbc31 -7.19deg,
+		var(--accents-2) 14deg,
+		var(--accents-2) 51deg,
+		var(--accents-2) 311deg,
+		#ffbc31 353deg,
+		var(--accents-2) 374deg
+	);
+}
+
+
+/* CPU Element Container */
+.cpu-element-container {
+	position: relative;
+	width: 180px;
+	height: 65px;
+}
+
+/* CPU Element Styles */
+.cpu-element {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	border-radius: 6px;
+	background-color: var(--background, #fff);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 6px 4px -2px rgba(0, 0, 0, 0.15),
+		inset 0 -3px 1px -1px rgba(0, 0, 0, 0.25);
+	transform: translateY(4px);
+	background: linear-gradient(180deg, #232323, #222222),
+		linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.05),
+			rgba(255, 255, 255, 0.05) 26.56%,
+			rgba(0, 0, 0, 0.05) 51.56%,
+			rgba(0, 0, 0, 0.05)
+		);
+}
+
+.cpu-element [data-cpu-shine="true"] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0) 0%,
+		rgba(255, 255, 255, 0.1) 50%,
+		rgba(255, 255, 255, 0) 100%
+	);
+	pointer-events: none;
+	z-index: 1;
+}
+
+.cpu-element [data-text="true"] {
+	position: relative;
+	z-index: 2;
+	font-weight: 600;
+	margin: 0.25rem 0;
+	color: white;
+	font-size: 0.9rem;
+	line-height: 1;
+	letter-spacing: -0.04em;
+}
+
+/* CPU Connectors */
+.cpu-connectors {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+	pointer-events: none;
+}
+
+.dark.cpu-connectors {
+	background: linear-gradient(
+		180deg,
+		#9a9a9a,
+		#686868 33.33%,
+		#848484 66.67%,
+		#3a3a3a
+	);
+}
+
+/* Connector base style */
+.connector {
+	position: absolute;
+	border-radius: 2px;
+	background: linear-gradient(
+		180deg,
+		#ffffff,
+		#d9d9d9 33.33%,
+		#ffffff 66.67%,
+		#bcbcbc
+	);
+	box-shadow:
+		0 2px 2px 1px rgba(0, 0, 0, 0.05), inset -1px 0 1px 1px
+		rgba(0, 0, 0, 0.1), inset -1px 0 1px #dddddd;
+}
+
+/* Top connectors */
+.connector[class*="top-"] {
+	top: 0px;
+	width: 6px;
+	height: 9px;
+	background: linear-gradient(
+		180deg,
+		#ffffff,
+		#d9d9d9 33.33%,
+		#ffffff 66.67%,
+		#bcbcbc
+	);
+}
+
+.connector.top-1 {
+	left: 21%;
+}
+.connector.top-2 {
+	left: 32.5%;
+}
+.connector.top-3 {
+	left: 44%;
+}
+.connector.top-4 {
+	left: 55.3%;
+}
+.connector.top-5 {
+	left: 67%;
+}
+.connector.top-6 {
+	left: 78.5%;
+}
+
+/* Bottom connectors */
+.connector[class*="bottom-"] {
+	bottom: -6px;
+	width: 6px;
+	height: 9px;
+}
+
+.connector.bottom-1 {
+	left: 21%;
+}
+.connector.bottom-2 {
+	left: 32.5%;
+}
+.connector.bottom-3 {
+	left: 44%;
+}
+.connector.bottom-4 {
+	left: 55.3%;
+}
+.connector.bottom-5 {
+	left: 67%;
+}
+.connector.bottom-6 {
+	left: 78.5%;
+}
+
+/* Left connectors */
+.connector.left-top {
+	left: -3px;
+	top: 42%;
+	width: 6px;
+	height: 6px;
+}
+
+.connector.left-bottom {
+	left: -3px;
+	top: 70%;
+	width: 6px;
+	height: 6px;
+}
+
+/* Right connectors */
+.connector.right-top {
+	right: -3px;
+	top: 42%;
+	width: 6px;
+	height: 6px;
+}
+
+.connector.right-bottom {
+	right: -3px;
+	top: 70%;
+	width: 6px;
+	height: 6px;
+}
+
+/* Stack utility class */
+.stack {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.cpu-element-container {
+		scale: 0.5;
+	}
+	.cpu-element {
+		min-width: 100px;
+		height: 70px;
+	}
+
+	.cpu-element [data-text="true"] {
+		font-size: 0.8rem;
+		margin: 0.2rem 0;
+	}
+}

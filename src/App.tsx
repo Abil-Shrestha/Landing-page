@@ -1,40 +1,37 @@
+import React from 'react';
+import BentoSection from './components/BentoSection.tsx';
+import FaqSection from './components/FaqSection';
+import FeaturesSection from './components/FeaturesSection';
+import FinalCtaSection from './components/FinalCtaSection';
+import Footer from './components/Footer';
+import HeroSection from './components/HeroSection';
+import HowItWorksSection from './components/HowItWorksSection';
+import Navbar from './components/Navbar';
+import PricingSection from './components/PricingSection';
+import SecuritySection from './components/SecuritySection';
+import SocialProofSection from './components/SocialProofSection';
+import TestimonialSection from './components/TestimonialSection';
+import TransitionSection from './components/TransitionSection';
+import TrustedByLogos from './components/TrustedByLogos';
+import './App.css'; // Keep global styles for now
+import BotCTA from '@/components/bot-cta';
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import { useEffect } from "react";
-
-const queryClient = new QueryClient();
-
-const App = () => {
-  // Initialize theme from localStorage or system preference
-  useEffect(() => {
-    const theme = localStorage.getItem("theme") || 
-      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-  }, []);
-
+function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <>
+      <Navbar />
+      <HeroSection />
+      <TrustedByLogos />
+      <BentoSection />
+      <FeaturesSection />
+      <TransitionSection />
+      <HowItWorksSection />
+      <PricingSection />
+      <FaqSection />
+      <BotCTA />
+      <Footer />
+    </>
   );
-};
+}
 
 export default App;
