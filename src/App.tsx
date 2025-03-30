@@ -1,3 +1,4 @@
+
 import React from 'react';
 import BentoSection from './components/BentoSection.tsx';
 import FaqSection from './components/FaqSection';
@@ -17,6 +18,7 @@ import './App.css'; // Keep global styles for now
 import BotCTA from '@/components/bot-cta';
 
 function App() {
+  // Added comment to trigger rebuild
   return (
     <>
       <Navbar />
