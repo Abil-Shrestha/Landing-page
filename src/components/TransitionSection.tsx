@@ -1,3 +1,4 @@
+
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -282,7 +283,15 @@ const testimonialsList: Testimonial[] = [
 export const TransitionSection = () => {
     const isLargeScreen = useMediaQuery('(min-width: 1024px)');
     const testimonialRef = useRef<HTMLDivElement>(null);
-    const isTestimonialVisible = useInView(testimonialRef, { threshold: 0.2 });
+    // Fix the type error by extracting just the boolean value from useInView hook
+    const { ref, inView } = useInView({ threshold: 0.2 });
+    
+    // Set the ref to the testimonialRef element
+    useEffect(() => {
+        if (testimonialRef.current) {
+            ref(testimonialRef.current);
+        }
+    }, [testimonialRef, ref]);
 
     return (
         <section className="relative z-10 py-16 md:py-24 overflow-hidden bg-[var(--background)]">
@@ -301,7 +310,7 @@ export const TransitionSection = () => {
                         <div ref={testimonialRef} className="w-full max-w-4xl mx-auto py-8">
                             {isLargeScreen && (
                                 <TestimonialsDesktop
-                                    isVisible={isTestimonialVisible}
+                                    isVisible={inView}
                                     testimonials={testimonialsList}
                                     intervalTime={6000}
                                     clapTime={800}
@@ -309,7 +318,7 @@ export const TransitionSection = () => {
                             )}
                             {!isLargeScreen && (
                                 <TestimonialsMobile
-                                    isVisible={isTestimonialVisible}
+                                    isVisible={inView}
                                     testimonials={testimonialsList}
                                     intervalTime={6000}
                                     clapTime={800}
@@ -345,21 +354,15 @@ export const TransitionDirection = ({ direction }: { direction: 'up' | 'down' })
 
     // Calculate scale based on hover
     const mousePosition = useMousePosition(isHovered, ref, "center");
-    const scaleX = useTransform(mousePosition.x, value => isHovered ? 1 + value : 1);
-
-    // Apply spring physics to the animation
-    useSpring(scaleX, {
-        stiffness: 400,
-        damping: 100
-    });
-
-    // Scroll-based animations
+    
+    // Fix the scaling issue by creating proper motion values
     const { scrollYProgress } = useScroll({
         target: ref
     });
-
-    const scaleUp = useTransform(scrollYProgress, value => 18 * Math.pow(0.75 * value, 3));
-    const scaleDown = useTransform(scrollYProgress, value => -18 * Math.pow(0.75 * (1 - value), 3));
+    
+    // Use scrollYProgress (which is a MotionValue) with useTransform
+    const scaleUp = useTransform(scrollYProgress, [0, 1], [0, 18 * 0.75 * 0.75 * 0.75]);
+    const scaleDown = useTransform(scrollYProgress, [0, 1], [0, -18 * 0.75 * 0.75 * 0.75]);
 
     return (
         <div
