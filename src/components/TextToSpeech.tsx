@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useConversation } from '@11labs/react';
-import { headphones, play, square } from 'lucide-react';
+import { Headphones, Play, Square } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface TextToSpeechProps {
@@ -108,7 +108,7 @@ const TextToSpeech = ({
     return (
       <div className="flex flex-col items-center gap-3 mb-4">
         <div className="flex items-center gap-2">
-          <headphones className="h-5 w-5" />
+          <Headphones className="h-5 w-5" />
           <span>Hear about Reel-hyp</span>
         </div>
         <form onSubmit={handleSubmitApiKey} className="flex flex-col gap-2 w-full max-w-md">
@@ -139,11 +139,11 @@ const TextToSpeech = ({
       >
         {isPlaying ? (
           <>
-            <square className="h-4 w-4" /> Stop Audio
+            <Square className="h-4 w-4" /> Stop Audio
           </>
         ) : (
           <>
-            <play className="h-4 w-4" /> Listen to our pitch
+            <Play className="h-4 w-4" /> Listen to our pitch
           </>
         )}
       </button>
