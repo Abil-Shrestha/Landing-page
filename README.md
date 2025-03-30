@@ -1,69 +1,105 @@
-# Welcome to your Lovable project
+# ReelHyp
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/4943a5ca-fc94-4118-aad5-92683f2c02fc
+**URL**: https://hero-part-creator.lovable.app/
 
-## How can I edit this code?
+# ReelHyp 🚀
 
-There are several ways of editing your application.
+**AI-Generated Authentic UGC for Brands**
 
-**Use Lovable**
+## Project Overview
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4943a5ca-fc94-4118-aad5-92683f2c02fc) and start prompting.
+ReelHyp is an AI-powered platform that transforms how brands create user-generated content. Our solution generates authentic, engaging UGC-style content tailored to your brand voice and campaign goals in minutes, eliminating the need to chase creators or manage complex production workflows.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Competition Track
 
-**Use your preferred IDE**
+Website Track
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+**Target Audience:** Marketing teams, e-commerce brands, and agencies seeking to scale their UGC content creation without the traditional overhead of working with multiple creators.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 🔗 Project Link
 
-Follow these steps:
+[ReelHyp - AI-Generated UGC Platform](https://hero-part-creator.lovable.app)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 🎬 Video Demo
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Our 60-second demo showcases:
+- The landing page and the interactive elements
+- Text to speech with Elevenlabs 
 
-# Step 3: Install the necessary dependencies.
-npm i
+## Website Track Requirements
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### 💡 Project Description
 
-**Edit a file directly in GitHub**
+ReelHyp is a stunning product launch landing page for our AI-powered UGC generation platform. The website features:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Responsive design optimized for mobile, tablet, and desktop viewing
+- Interactive elements including animated bento grid sections and dynamic feature showcases
+- Modern UI with Tailwind CSS and Shadcn UI components
+- Seamless user experience with intuitive navigation
+- Text to speech with Elevenlabs
+- Error monitoring with Sentry
 
-**Use GitHub Codespaces**
+### 🔌 Technology Integrations
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. **Elevenlabs Integration** (@11labs/react)
+   - Provides realistic voice generation for video content demos
+   - Enables visitors to hear AI-generated voiceovers in sample UGC content
+   - Demonstrates the platform's ability to create multi-sensory content
 
-## What technologies are used for this project?
+2. **Error Monitoring with Sentry** (@sentry/react)
+   - Ensures website stability and performance
+   - Tracks user interactions to optimize the landing page experience
+   - Provides real-time error reporting for continuous improvement
 
-This project is built with .
+### 🎮 Interactive Elements
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Our landing page features several interactive elements:
+- Animated bento grid showcasing the platform's features
+- Animated Brand logo hover
+- Animated Features section
+- Responsive pricing toggle between monthly and yearly plans
 
-## How can I deploy this project?
+## Technical Implementation
 
-Simply open [Lovable](https://lovable.dev/projects/4943a5ca-fc94-4118-aad5-92683f2c02fc) and click on Share -> Publish.
+### 🛠️ Core Technologies
 
-## I want to use a custom domain - is that possible?
+ReelHyp is built using a modern tech stack:
+- **React with Vite**: For a responsive, fast-loading frontend experience
+- **TypeScript**: For type-safe, maintainable code
+- **Tailwind CSS & Shadcn UI**: For beautiful, consistent UI components
+- **Framer Motion**: For smooth animations and transitions
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+## Screenshots & Features
+
+### 1. Hero Section
+![Hero Section](/public/screenshot-0.png)
+
+### 2. Bento Grid Section
+![Bento Grid Section](/public/screenshot-1.png)
+
+### 3. Features Section
+![Features Section](/public/screenshot-2.png)
+
+## Team Information
+
+ReelHyp is a Solo project by Abil Shrestha.
+
+## Desired visitor actions
+
+- Visitors should be able to navigate the landing page and understand the platform's benefits and start using it.
+
+
+## Required integrations implementation 
+
+1. **Elevenlabs Integration** (@11labs/react)
+   - Enables visitors to hear what the platform does.
+
+2. **Error Monitoring with Sentry** (@sentry/react)
+   - Ensures website stability and performance
+   - Provides real-time error reporting for continuous improvement
+
+---
+
+*ReelHyp is participating in the Website Track of the hackathon, focusing on building a stunning landing page with powerful integrations from Elevenlabs and Sentry.*

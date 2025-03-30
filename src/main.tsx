@@ -1,16 +1,13 @@
 
 import { createRoot } from 'react-dom/client'
 import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/browser";
 import App from './App.tsx'
 import './index.css'
 
 // Initialize Sentry
 Sentry.init({
   dsn: "https://4c33de1bc4664e03f1f8ee497c7cc592@o4509065806282752.ingest.us.sentry.io/4509065807134720",
-  integrations: [
-    new Sentry.BrowserTracing(),
-    new Sentry.Replay(),
-  ],
   // Performance Monitoring
   tracesSampleRate: 1.0, // Capture 100% of transactions in development, adjust in production
   // Session Replay

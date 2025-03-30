@@ -53,11 +53,11 @@ const BentoSection: React.FC = () => {
             <div className="border-x border-border mx-5 md:mx-10 relative w-full max-w-7xl"> {/* Added border color and max-width */}
                 {/* Left side pattern - with reduced opacity */}
                 <div
-                    className="absolute top-0 -left-4 md:-left-14 h-full w-4 md:w-14 text-primary/10 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)]"
+                    className="absolute top-0 -left-4 md:-left-14 h-full w-4 md:w-14 text-primary/10 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)] opacity-50"
                 />
                 {/* Right side pattern - with reduced opacity */}
                 <div
-                    className="absolute top-0 -right-4 md:-right-14 h-full w-4 md:w-14 text-primary/10 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)]"
+                    className="absolute top-0 -right-4 md:-right-14 h-full w-4 md:w-14 text-primary/10 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)] opacity-50"
                 />
 
                 {/* Replacing l.X component with a div for title/description */}

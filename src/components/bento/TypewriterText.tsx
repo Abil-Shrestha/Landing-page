@@ -297,7 +297,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = (props) => {
                     {segments.map((segment, index) => (
                         <span
                             key={segment.index}
-                            className="transition-opacity duration-[var(--fade-duration)] ease-in-out"
+                            className="transition-opacity duration-[var(--fade-d    uration)] ease-in-out"
                             style={{
                                 // Calculate delay based on segment index and speed
                                 transitionDelay: `${index * getSegmentDelay()}ms`,

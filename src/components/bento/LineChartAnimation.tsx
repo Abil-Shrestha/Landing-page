@@ -284,7 +284,7 @@ interface ThirdBentoAnimationProps {
 export const ThirdBentoAnimation: React.FC<ThirdBentoAnimationProps> = ({
     data,
     toolTipValues,
-    color = "blue", // Default color var
+    color = "#000000", // Default color var
     startAnimationDelay = 0,
     once = false
 }) => {
