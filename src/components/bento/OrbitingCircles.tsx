@@ -12,8 +12,8 @@ interface OrbitingCirclesProps {
     radius?: number;
     path?: boolean;
     iconSize?: number;
-    speed?: number; 
-    index?: number; 
+    speed?: number;
+    index?: number;
     startAnimationDelay?: number;
     once?: boolean; // This is passed separately to useIntersectionObserver
     startAngle?: number;
@@ -100,7 +100,7 @@ const OrbitingCircles: React.FC<OrbitingCirclesProps> = ({
                 >
                     <div
                         className={cn(
-                            "size-full rounded-full",
+                            "size-full rounded-md",
                             // Adjusted border colors for better visibility 
                             "border border-border/40",
                             // Simplified gradient for modern look
@@ -127,7 +127,7 @@ const OrbitingCircles: React.FC<OrbitingCirclesProps> = ({
                             transform: `rotate(${angle}deg) translateX(${0.98 * radius}px) rotate(-${angle}deg)`,
                         } as React.CSSProperties}
                         className={cn(
-                            "absolute flex size-[var(--icon-size)] z-20 p-1 transform-gpu animate-orbit items-center justify-center rounded-full",
+                            "absolute flex size-[var(--icon-size)] z-20 p-1 transform-gpu animate-orbit items-center justify-center rounded-md",
                             reverse && "[animation-direction:reverse]"
                         )}
                     >

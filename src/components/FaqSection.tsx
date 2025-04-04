@@ -39,19 +39,19 @@ interface FaqItemProps {
 const FaqItem: React.FC<FaqItemProps> = ({ question, answer, isOpen, toggleOpen }) => {
     return (
         <div className="border-b border-[var(--accents-3)]">
-            <button 
+            <button
                 className="w-full py-5 flex justify-between items-center text-left focus:outline-none"
                 onClick={toggleOpen}
             >
                 <span className="font-medium text-[var(--text-primary)]">{question}</span>
                 <span className="text-[var(--accents-5)] ml-4">
-                    {isOpen ? 
-                        <Minus className="h-4 w-4" /> : 
+                    {isOpen ?
+                        <Minus className="h-4 w-4" /> :
                         <Plus className="h-4 w-4" />
                     }
                 </span>
             </button>
-            <div 
+            <div
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 pb-5' : 'max-h-0'}`}
             >
                 <p className="text-[var(--text-secondary)] text-sm leading-relaxed">{answer}</p>
@@ -62,7 +62,7 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, answer, isOpen, toggleOpen 
 
 const FaqSection: React.FC = () => {
     const [openIndex, setOpenIndex] = React.useState<number | null>(0); // First one open by default
-    
+
     const toggleFaq = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
@@ -72,7 +72,7 @@ const FaqSection: React.FC = () => {
             <div className="mx-auto max-w-3xl">
                 {/* Section Header */}
                 <div className="text-center mb-12 px-4">
-                    <div className="border border-[var(--accents-3)] bg-[var(--accents-2)] backdrop-blur-sm rounded-full text-sm h-8 px-3 flex items-center gap-2 w-fit mx-auto mb-4">
+                    <div className="border border-[var(--accents-3)] bg-[var(--accents-2)] backdrop-blur-sm rounded-md text-sm h-8 px-3 flex items-center gap-2 w-fit mx-auto mb-4">
                         <Sparkles className="h-4 w-4 text-[var(--accents-5)]" />
                         <span>FAQ</span>
                     </div>
@@ -84,26 +84,26 @@ const FaqSection: React.FC = () => {
                         Everything you need to know about our AI UGC ad maker
                     </p>
                 </div>
-                
+
                 {/* FAQ List */}
                 <div className="divide-y divide-[var(--accents-3)] border-t border-[var(--accents-3)]">
                     {faqData.map((faq, index) => (
-                        <FaqItem 
-                            key={index} 
-                            question={faq.question} 
-                            answer={faq.answer} 
+                        <FaqItem
+                            key={index}
+                            question={faq.question}
+                            answer={faq.answer}
                             isOpen={openIndex === index}
                             toggleOpen={() => toggleFaq(index)}
                         />
                     ))}
                 </div>
-                
+
                 {/* Contact CTA */}
                 <div className="mt-12 text-center">
                     <p className="text-[var(--text-secondary)] mb-4">Still have questions?</p>
-                    <a 
-                        href="#contact" 
-                        className="inline-flex items-center gap-2 rounded-full bg-[var(--accents-2)] dark:bg-[var(--accents-1)] px-4 py-2 text-sm font-medium hover:bg-neutral-300 dark:hover:bg-[var(--accents-2)] transition-colors"
+                    <a
+                        href="#contact"
+                        className="inline-flex items-center gap-2 rounded-md bg-[var(--accents-2)] dark:bg-[var(--accents-1)] px-4 py-2 text-sm font-medium hover:bg-neutral-300 dark:hover:bg-[var(--accents-2)] transition-colors"
                     >
                         Contact Support
                     </a>

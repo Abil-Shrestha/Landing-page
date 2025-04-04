@@ -10,7 +10,6 @@ const BotCTA = () => {
                     Start Marketing Now!
                 </h2>
                 
-                <TextToSpeech text="Reel-hyp helps you create stunning marketing content with AI. Generate videos, images, and copy that converts. Join thousands of marketers already using our platform to boost their engagement and sales." />
                 
                 <button
                     type="button"

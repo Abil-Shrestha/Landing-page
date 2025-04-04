@@ -78,12 +78,12 @@ const ChatInteraction: React.FC = () => {
                             "We need UGC for our new summer shoe line launch. Target audience is Gen Z, focus on outdoor activities, fun vibes. Can you generate some image ideas?"
                         </p>
                     </motion.div>
-                    <div className="flex items-center bg-background rounded-full w-fit border border-border flex-shrink-0">
+                    <div className="flex items-center bg-background rounded-md w-fit border border-border flex-shrink-0">
                         {/* Using a placeholder image */}
                         <img
                             src="https://randomuser.me/api/portraits/women/72.jpg"
                             alt="User Avatar"
-                            className="size-8 rounded-full flex-shrink-0"
+                            className="size-8 rounded-md flex-shrink-0"
                         />
                     </div>
                 </div>
@@ -91,7 +91,7 @@ const ChatInteraction: React.FC = () => {
                 {/* AI section (Avatar + Response/Loading Dots) */}
                 <div className="flex items-start gap-2">
                     {/* AI Avatar */}
-                    <div className="flex items-center bg-background rounded-full size-10 flex-shrink-0 justify-center shadow-[0_0_10px_rgba(0,0,0,0.05)] border border-border">
+                    <div className="flex items-center bg-background rounded-md size-10 flex-shrink-0 justify-center shadow-[0_0_10px_rgba(0,0,0,0.05)] border border-border">
                         <Bot className="size-4 text-primary" /> {/* Using Bot icon */}
                     </div>
 
@@ -122,7 +122,7 @@ const ChatInteraction: React.FC = () => {
                                         {[0, 1, 2].map((i) => (
                                             <motion.div
                                                 key={i}
-                                                className="w-2 h-2 bg-primary/50 rounded-full"
+                                                className="w-2 h-2 bg-primary/50 rounded-md"
                                                 animate={{
                                                     y: [0, -5, 0],
                                                 }}

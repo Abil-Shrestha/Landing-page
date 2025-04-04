@@ -74,7 +74,7 @@ const PricingSection: React.FC = () => {
             <div className="mx-auto max-w-7xl">
                 {/* Section Header */}
                 <div className="text-center mb-12 px-4">
-                    <div className="border border-[var(--accents-3)] bg-[var(--accents-2)] backdrop-blur-sm rounded-full text-sm h-8 px-3 flex items-center gap-2 w-fit mx-auto mb-4">
+                    <div className="border border-[var(--accents-3)] bg-[var(--accents-2)] backdrop-blur-sm rounded-md text-sm h-8 px-3 flex items-center gap-2 w-fit mx-auto mb-4">
                         <Sparkles className="h-4 w-4 text-[var(--accents-5)]" />
                         <span>Pricing</span>
                     </div>
@@ -89,9 +89,9 @@ const PricingSection: React.FC = () => {
 
                 {/* Billing Cycle Toggle */}
                 <div className="flex justify-center mb-12">
-                    <div className="inline-flex items-center p-1 rounded-full border border-[var(--accents-3)] bg-[var(--accents-1)]">
+                    <div className="inline-flex items-center p-1 rounded-md border border-[var(--accents-3)] bg-[var(--accents-1)]">
                         <button
-                            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${billingCycle === 'monthly'
+                            className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${billingCycle === 'monthly'
                                 ? 'bg-[var(--accents-2)] text-[var(--text-primary)]'
                                 : 'text-[var(--text-secondary)]'}`}
                             onClick={() => setBillingCycle('monthly')}
@@ -99,13 +99,13 @@ const PricingSection: React.FC = () => {
                             Monthly
                         </button>
                         <button
-                            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${billingCycle === 'yearly'
+                            className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${billingCycle === 'yearly'
                                 ? 'bg-[var(--accents-2)] text-[var(--text-primary)]'
                                 : 'text-[var(--text-secondary)]'}`}
                             onClick={() => setBillingCycle('yearly')}
                         >
                             Yearly
-                            <span className="ml-1 text-xs py-0.5 px-1.5 rounded-full bg-[var(--accents-3)] text-[var(--accents-5)]">Save 20%</span>
+                            <span className="ml-1 text-xs py-0.5 px-1.5 rounded-md bg-[var(--accents-3)] text-[var(--accents-5)]">Save 20%</span>
                         </button>
                     </div>
                 </div>

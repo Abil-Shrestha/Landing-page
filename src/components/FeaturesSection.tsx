@@ -5,7 +5,7 @@ import { AnimatedLines } from './AnimatedLines';
 
 // Feature Badge Component
 const FeatureBadge: React.FC<{ text: string }> = ({ text }) => (
-    <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+    <div className="inline-flex items-center rounded-md border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
         {text}
     </div>
 );
@@ -75,7 +75,7 @@ const FeaturesSection: React.FC = () => {
             <div className="mx-auto max-w-7xl">
                 {/* Section Header */}
                 <div className="text-center mb-12 px-4">
-                    <div className="border border-border bg-primary/5 backdrop-blur-sm rounded-full text-sm h-8 px-3 flex items-center gap-2 w-fit mx-auto mb-4">
+                    <div className="border border-border bg-primary/5 backdrop-blur-sm rounded-md text-sm h-8 px-3 flex items-center gap-2 w-fit mx-auto mb-4">
                         <Sparkles className="h-4 w-4 text-primary" />
                         <span>AI-Powered Features</span>
                     </div>

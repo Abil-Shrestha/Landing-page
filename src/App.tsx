@@ -19,7 +19,6 @@ function App() {
     <>
       <Navbar />
       <HeroSection />
-      <TrustedByLogos />
       <BentoSection />
       <FeaturesSection />
       <TransitionSection />

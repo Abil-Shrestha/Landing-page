@@ -259,7 +259,7 @@ const AnimatedTooltip: React.FC<TooltipProps> = ({ toolTipValues, shouldAnimate,
             "transition-opacity duration-300 ease-in-out",
             "absolute top-16 md:top-32 left-[42%] -translate-x-1/2", // Adjusted top position slightly
             "text-sm bg-background border border-border/70 text-foreground", // Use theme colors
-            "px-4 py-1 rounded-full h-8 flex items-center justify-center",
+            "px-4 py-1 rounded-md h-8 flex items-center justify-center",
             "font-mono shadow-md", // Simpler shadow
             isVisible ? "opacity-100" : "opacity-0"
         )}>

@@ -1,5 +1,8 @@
 import type React from 'react';
 import { cn } from '../lib/utils'; // Assuming utils file exists for cn
+import { Play } from "lucide-react"
+import { useState } from 'react';
+import { useRef } from 'react';
 
 // --- Recreate Badge Icon SVG Component ---
 const BadgeIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -17,11 +20,102 @@ const BadgeIcon: React.FC<{ className?: string }> = ({ className }) => (
     </svg>
 );
 
+// Updated HeroVideoDialog to show video's first frame as thumbnail
+const HeroVideoDialog: React.FC<{ videoSrc: string }> = ({ videoSrc }) => {
+    const [isPlaying, setIsPlaying] = useState(false)
+    const videoRef = useRef<HTMLVideoElement>(null)
+
+    const handlePlayClick = () => {
+        setIsPlaying(true)
+        if (videoRef.current) {
+            videoRef.current.play()
+        }
+    }
+
+    return (
+        <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl">
+            {/* Always render the video element, use preload="metadata" to show the first frame */}
+            <video
+                ref={videoRef}
+                src={videoSrc}
+                controls={isPlaying} // Show controls only when playing
+                preload="metadata" // Important to load the first frame for thumbnail
+                className="w-full h-full object-cover"
+                onClick={!isPlaying ? handlePlayClick : undefined} // Allow clicking video to play if not already playing
+                playsInline // Good practice for mobile
+            >
+                <source src={videoSrc} type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+
+            {/* Overlay with play button, hidden when playing */}
+            {!isPlaying && (
+                <button
+                    onClick={handlePlayClick}
+                    className="absolute inset-0 flex items-center justify-center w-full h-full bg-black/20 hover:bg-black/30 transition-colors cursor-pointer"
+                    aria-label="Play video"
+                >
+                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                        <Play className="h-5 w-5 text-white fill-white ml-1" />
+                    </div>
+                </button>
+            )}
+        </div>
+    )
+}
+
+const VideoGrid: React.FC = () => {
+    const videos = [
+        {
+            id: 1,
+            title: "Product Showcase",
+            category: "E-commerce",
+            videoSrc: "/placeholder-1.mp4",
+            // Removed thumbnailSrc
+        },
+        {
+            id: 3,
+            title: "How-to Tutorial",
+            category: "Educational",
+            videoSrc: "/placeholder-3.mp4",
+            // Removed thumbnailSrc
+        },
+        {
+            id: 2,
+            title: "Customer Review",
+            category: "Testimonial",
+            videoSrc: "/placeholder-2.mp4",
+            // Removed thumbnailSrc
+        },
+        {
+            id: 4,
+            title: "Lifestyle Usage",
+            category: "Lifestyle",
+            videoSrc: "/placeholder-4.mp4",
+            // Removed thumbnailSrc
+        },
+    ]
+
+    return (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full mt-12">
+            {videos.map((video) => (
+                <div
+                    key={video.id}
+                    className="relative overflow-hidden rounded-xl border border-white/10 dark:border-black/10 bg-white/5 dark:bg-black/5 backdrop-blur-sm"
+                >
+                    {/* Pass only videoSrc, removed thumbnailAlt and thumbnailSrc */}
+                    <HeroVideoDialog videoSrc={video.videoSrc} />
+
+                </div>
+            ))}
+        </div>
+    )
+}
 // Hero Section Data (updated for AI UGC)
 const heroData = {
     badgeIcon: <BadgeIcon />,
     badge: "Generate Authentic UGC with AI",
-    title: "UGC Campaigns for your brand",
+    title: "UGC That Converts Effortlessly!",
     description: "Stop chasing creators. Our AI generates realistic, engaging user-generated content tailored to your brand voice and campaign goals in minutes.",
     cta: {
         primary: {
@@ -46,62 +140,61 @@ const HeroSection: React.FC = () => {
             <div className="relative flex flex-col items-center w-full px-6 h-[600px] md:h-[800px] mt-2">
 
                 {/* Background Gradient Container */}
-                <div className="absolute inset-0">
+                {/* <div className="absolute inset-0">
                     <div
                         className="absolute inset-0 -z-10 h-[600px] md:h-[800px] w-full rounded-b-xl bg-cover bg-center bg-no-repeat "
                         style={{ backgroundImage: 'url(/dithered_image1.png)' }}
                     />
-                </div>
+                </div> */}
 
                 {/* Content Container - Adjusted padding for mobile */}
-                <div className="relative z-10 pt-20 md:pt-32 max-w-3xl mx-auto h-full w-full flex flex-col gap-10 items-center justify-center">
-                    {/* Content wrapper with backdrop blur */}
+                {/* <div className="relative z-10 pt-20 md:pt-32 max-w-3xl mx-auto h-full w-full flex flex-col gap-10 items-center justify-center">
                     <div className="w-full p-8 md:p-12 rounded-2xl bg-white/10 dark:bg-black/10 backdrop-blur-lg border border-white/10 dark:border-black/10 shadow-lg">
-                        {/* Badge - Changed to <p> tag to match HTML */}
-                        <p className="border border-border bg-white/80 dark:bg-black/80 backdrop-blur-sm rounded-full text-sm h-8 px-3 flex items-center gap-2 w-fit mx-auto">
+
+                        <p className="border border-border bg-white/80 dark:bg-black/80 backdrop-blur-sm rounded-md text-sm h-8 px-3 flex items-center gap-2 w-fit mx-auto">
                             <BadgeIcon />
                             {heroData.badge}
                         </p>
 
-                        {/* Text Content Wrapper */}
+
                         <div className="flex flex-col items-center justify-center gap-5 mt-8">
-                            {/* Title - Matched classes from HTML */}
+
                             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center text-black dark:text-white">
                                 {heroData.title}
                             </h1>
-                            {/* Description - Matched classes from HTML */}
                             <p className="text-base md:text-lg text-center text-black/80 dark:text-white/80 font-medium text-balance leading-relaxed tracking-tight">
                                 {heroData.description}
                             </p>
                         </div>
 
-                        {/* CTAs - Adjusted layout for mobile */}
+
                         <div className="flex flex-col sm:flex-row items-center mt-8 gap-2.5 w-full sm:w-auto justify-center">
                             <a
                                 href={heroData.cta.primary.href}
-                                className="bg-black dark:bg-white h-9 flex items-center justify-center text-sm font-medium tracking-wide rounded-full text-white dark:text-black w-full sm:w-32 px-4 shadow-lg border border-white/20 dark:border-black/20 hover:bg-black/80 dark:hover:bg-white/80 transition-all ease-out active:scale-95"
+                                className="bg-black dark:bg-white h-9 flex items-center justify-center text-sm font-medium tracking-wide rounded-md text-white dark:text-black w-full sm:w-32 px-4 shadow-lg border border-white/20 dark:border-black/20 hover:bg-black/80 dark:hover:bg-white/80 transition-all ease-out active:scale-95"
                             >
                                 {heroData.cta.primary.text}
                             </a>
                             <a
                                 href={heroData.cta.secondary.href}
-                                className="h-10 flex items-center justify-center w-full sm:w-32 px-5 text-sm font-normal tracking-wide text-primary rounded-full transition-all ease-out active:scale-95 bg-white dark:bg-background border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white/80 dark:hover:bg-background/80"
+                                className="h-10 flex items-center justify-center w-full sm:w-32 px-5 text-sm font-normal tracking-wide text-primary rounded-md transition-all ease-out active:scale-95 bg-white dark:bg-background border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white/80 dark:hover:bg-background/80"
                             >
                                 {heroData.cta.secondary.text}
                             </a>
                         </div>
                     </div>
-                </div>
-
-                {/* Video Section Container - Matched structure */}
-                {/* <div className="relative px-6 md:mt-48 mt-24 sm:mt-38 ">
-                    <div className="relative size-full shadow-xl rounded-2xl overflow-hidden">
-                        <HeroVideoDialog
-                            videoSrc={VIDEO_URL}
-                            thumbnailAlt="AI UGC App Demo Video"
-                        />
-                    </div>
                 </div> */}
+
+                {/* Video Grid Section */}
+                <div className="w-full mt-8 md:mt-12">
+                    <div className="flex flex-col items-center justify-center gap-5 mt-8">
+
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center text-black dark:text-white">
+                            {heroData.title}
+                        </h1>
+                    </div>
+                    <VideoGrid />
+                </div>
             </div>
         </section>
     );

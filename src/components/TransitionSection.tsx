@@ -174,7 +174,7 @@ const TestimonialRotator = ({
                                 }, clapTime / 2);
                             }
                         }}
-                        className={`w-2 h-2 rounded-full transition-all ease-in-out transition-0.3 ${currentIndex === index ? 'bg-[var(--accents-4)] w-4' : 'bg-[var(--accents-2)]'}`}
+                        className={`w-2 h-2 rounded-md transition-all ease-in-out transition-0.3 ${currentIndex === index ? 'bg-[var(--accents-4)] w-4' : 'bg-[var(--accents-2)]'}`}
                         aria-label={`View testimonial ${index + 1}`}
                     />
                 ))}
@@ -285,7 +285,7 @@ export const TransitionSection = () => {
     const testimonialRef = useRef<HTMLDivElement>(null);
     // Fix the type error by extracting just the boolean value from useInView hook
     const { ref, inView } = useInView({ threshold: 0.2 });
-    
+
     // Set the ref to the testimonialRef element
     useEffect(() => {
         if (testimonialRef.current) {
@@ -354,12 +354,12 @@ export const TransitionDirection = ({ direction }: { direction: 'up' | 'down' })
 
     // Calculate scale based on hover
     const mousePosition = useMousePosition(isHovered, ref, "center");
-    
+
     // Fix the scaling issue by creating proper motion values
     const { scrollYProgress } = useScroll({
         target: ref
     });
-    
+
     // Use scrollYProgress (which is a MotionValue) with useTransform
     const scaleUp = useTransform(scrollYProgress, [0, 1], [0, 18 * 0.75 * 0.75 * 0.75]);
     const scaleDown = useTransform(scrollYProgress, [0, 1], [0, -18 * 0.75 * 0.75 * 0.75]);

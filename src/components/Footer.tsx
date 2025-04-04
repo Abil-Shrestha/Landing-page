@@ -196,31 +196,6 @@ const Footer = () => {
                     </div>
                 ))}
 
-                {/* Tech Sponsors Credits - Added for hackathon */}
-                <div className="w-full mt-8 py-4 border-t border-[var(--accents-2)]">
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                        <p className="text-sm text-[var(--text-secondary)]">Powered by:</p>
-                        <div className="flex items-center gap-2">
-                            <a
-                                href="https://sentry.io"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
-                            >
-                                <span className="text-md text-[var(--text-secondary)]">Sentry</span>
-                            </a>
-                            <span>&</span>
-                            <a
-                                href="https://elevenlabs.io"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
-                            >
-                                <span className="text-md text-[var(--text-secondary)]">ElevenLabs</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </footer>
         </div>
     )

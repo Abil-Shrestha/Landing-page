@@ -85,7 +85,7 @@ const DesktopNav: React.FC<DesktopNavProps> = ({ activeSection, onLinkClick }) =
     return (
         <div className="w-full hidden md:block ">
             <ul
-                className="relative mx-auto flex w-fit rounded-full h-11 px-2 items-center justify-center"
+                className="relative mx-auto flex w-fit rounded-md h-11 px-2 items-center justify-center"
                 ref={navRef}
             >
                 {navLinks.map((link) => (
@@ -111,7 +111,7 @@ const DesktopNav: React.FC<DesktopNavProps> = ({ activeSection, onLinkClick }) =
                         layoutId="underline" // Added layoutId for smoother animation if needed elsewhere
                         animate={{ left: underlineStyle.left, width: underlineStyle.width }}
                         transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                        className="absolute inset-0 my-1.5 rounded-full bg-accent/60 border border-border -z-10" // Use theme colors
+                        className="absolute inset-0 my-1.5 rounded-md bg-accent/60 border border-border -z-10" // Use theme colors
                     />
                 )}
             </ul>
@@ -220,7 +220,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose, activeSection, o
                             <div className="flex flex-col gap-2">
                                 <a
                                     href="#" // Replace with actual link or action
-                                    className="bg-black dark:bg-white h-9 flex items-center justify-center text-sm font-medium tracking-wide rounded-full text-white dark:text-black w-full px-4 shadow-sm border border-transparent hover:bg-black/90 dark:hover:bg-white/90 transition-colors" // Explicit colors
+                                    className="bg-black dark:bg-white h-9 flex items-center justify-center text-sm font-medium tracking-wide rounded-md text-white dark:text-black w-full px-4 shadow-sm border border-transparent hover:bg-black/90 dark:hover:bg-white/90 transition-colors" // Explicit colors
                                 >
                                     Generate Content Now
                                 </a>
@@ -276,7 +276,7 @@ const ThemeToggle: React.FC = () => {
     return (
         <button
             onClick={toggleTheme}
-            className="relative border border-border hover:bg-muted transition-colors size-7 sm:size-8 rounded-full cursor-pointer flex items-center justify-center"
+            className="relative border border-border hover:bg-muted transition-colors size-7 sm:size-8 rounded-md cursor-pointer flex items-center justify-center"
             aria-label="Toggle theme"
         >
             <Sun className={cn("h-4 w-4 sm:h-5 sm:w-5 text-black dark:text-white transition-all", isDark ? 'rotate-90 scale-0' : 'rotate-0 scale-100')} />
@@ -368,7 +368,7 @@ const Navbar: React.FC = () => {
                     {/* Background and Border Container */}
                     <div
                         className={cn(
-                            'mx-auto w-full rounded-full transition-all duration-300 ease-out',
+                            'mx-auto w-full rounded-md transition-all duration-300 ease-out',
                             isScrolled
                                 ? 'px-2 sm:px-3 py-1 border border-border backdrop-blur-lg bg-background/75 shadow-md' // Scrolled styles with responsive padding
                                 : 'px-2 sm:px-4 py-2 shadow-none bg-transparent border border-transparent' // Initial styles with responsive padding
@@ -389,7 +389,7 @@ const Navbar: React.FC = () => {
                             <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0 ml-2 sm:ml-4"> {/* Responsive spacing */}
                                 <a
                                     href="#" // Replace with link or action
-                                    className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 hidden md:inline-flex items-center justify-center text-xs sm:text-sm h-7 sm:h-8 px-3 sm:px-4 rounded-full font-medium transition-colors shadow-sm border border-transparent" // Explicit colors
+                                    className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 hidden md:inline-flex items-center justify-center text-xs sm:text-sm h-7 sm:h-8 px-3 sm:px-4 rounded-md font-medium transition-colors shadow-sm border border-transparent" // Explicit colors
                                 >
                                     Generate Content Now
                                 </a>
@@ -397,7 +397,7 @@ const Navbar: React.FC = () => {
 
                                 {/* Mobile Menu Button */}
                                 <button
-                                    className="md:hidden border border-border size-7 sm:size-8 rounded-full cursor-pointer flex items-center justify-center hover:bg-muted transition-colors" // Responsive sizing
+                                    className="md:hidden border border-border size-7 sm:size-8 rounded-md cursor-pointer flex items-center justify-center hover:bg-muted transition-colors" // Responsive sizing
                                     onClick={toggleMobileMenu}
                                     aria-label="Toggle menu"
                                 >

@@ -44,7 +44,7 @@ const HowItWorksSection: React.FC = () => {
             <div className="mx-auto max-w-7xl">
                 {/* Section Header */}
                 <div className="text-center mb-12 px-4">
-                    <div className="border border-[var(--accents-3)] bg-[var(--accents-2)] backdrop-blur-sm rounded-full text-sm h-8 px-3 flex items-center gap-2 w-fit mx-auto mb-4">
+                    <div className="border border-[var(--accents-3)] bg-[var(--accents-2)] backdrop-blur-sm rounded-md text-sm h-8 px-3 flex items-center gap-2 w-fit mx-auto mb-4">
                         <Sparkles className="h-4 w-4 text-[var(--accents-5)]" />
                         <span>How It Works</span>
                     </div>
@@ -71,7 +71,7 @@ const HowItWorksSection: React.FC = () => {
                             >
                                 {/* Step Number and Icon */}
                                 <div className="flex items-center mb-4">
-                                    <div className="w-10 h-10 rounded-full bg-[var(--accents-2)] border border-[var(--accents-3)] flex items-center justify-center text-lg font-medium text-[var(--accents-5)] mr-3">
+                                    <div className="w-10 h-10 rounded-md bg-[var(--accents-2)] border border-[var(--accents-3)] flex items-center justify-center text-lg font-medium text-[var(--accents-5)] mr-3">
                                         {index + 1}
                                     </div>
                                     <div className="p-2 rounded-lg bg-[var(--accents-2)] text-[var(--accents-5)]">
@@ -115,7 +115,7 @@ const HowItWorksSection: React.FC = () => {
                 <div className="mt-12 text-center">
                     <a
                         href="#pricing"
-                        className="inline-flex items-center gap-2 rounded-full bg-[var(--accents-2)] dark:bg-[var(--accents-1)] px-4 py-2 text-sm font-medium dark:hover:bg-[var(--accents-2)] hover:bg-neutral-300  transition-colors"
+                        className="inline-flex items-center gap-2 rounded-md bg-[var(--accents-2)] dark:bg-[var(--accents-1)] px-4 py-2 text-sm font-medium dark:hover:bg-[var(--accents-2)] hover:bg-neutral-300  transition-colors"
                     >
                         Get Started
                         <ArrowRight className="h-4 w-4" />
